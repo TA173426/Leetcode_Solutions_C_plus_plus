@@ -4,11 +4,9 @@ public:
         unordered_map<int, int> myMap;
         myMap.reserve(10001);
         for(int i=0;i<nums.size();i++){
-            myMap[nums[i]]++;
+            if(myMap[nums[i]]==2)myMap.erase(nums[i]);
+            else myMap[nums[i]]++;
         }
-        for (const auto& [key, value] : myMap) {
-            if(value==1)return key;
-        }   
-        return 0;
+        return myMap.begin()->first;
     }
 };
